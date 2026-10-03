@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Brayan 💙</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; overflow-x:hidden;
+  font-family:"Trebuchet MS",Arial,sans-serif;
+  background:radial-gradient(circle at 50% 20%,#27466e 0,#10243d 42%,#07111f 100%);
+  color:#fff; display:flex; justify-content:center; align-items:center;
+}
+.stars,.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.star{position:absolute;color:#bcecff;font-size:14px;animation:twinkle 2.5s infinite ease-in-out}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
+.heart{position:absolute;font-size:20px;animation:float 7s linear infinite;opacity:.7}
+@keyframes float{from{transform:translateY(105vh) rotate(0);opacity:0}15%{opacity:.8}to{transform:translateY(-15vh) rotate(35deg);opacity:0}}
+
+.screen{width:min(920px,94vw);min-height:650px;display:flex;align-items:center;justify-content:center;padding:28px}
+.card{
+  width:min(760px,100%); min-height:570px; position:relative;
+  background:rgba(247,252,255,.97); color:#18324c;
+  border-radius:28px; padding:38px; box-shadow:0 25px 80px #0008;
+  border:3px solid #9de9ff; text-align:center;
+}
+.hidden{display:none!important}
+h1{font-size:clamp(30px,6vw,54px);margin:8px 0 12px;color:#16466a}
+h2{color:#176184}
+p{font-size:18px;line-height:1.65}
+button{
+  border:0;border-radius:999px;padding:15px 27px;font-size:17px;
+  cursor:pointer;background:#54cbe8;color:#07314b;font-weight:bold;
+  box-shadow:0 7px 0 #2c91b0;transition:.18s;
+}
+button:hover{transform:translateY(-3px);box-shadow:0 10px 0 #2c91b0}
+button:active{transform:translateY(3px);box-shadow:0 4px 0 #2c91b0}
+
+/* Sobre */
+.envelope-wrap{display:flex;flex-direction:column;align-items:center;gap:25px}
+.envelope{width:280px;height:190px;position:relative;filter:drop-shadow(0 15px 15px #0002);cursor:pointer;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(1deg)}}
+.env-back{position:absolute;inset:0;background:#8edff2;border-radius:14px}
+.env-flap{position:absolute;left:0;top:0;border-left:140px solid transparent;border-right:140px solid transparent;border-top:105px solid #63c8e2;z-index:3}
+.env-bottom{position:absolute;bottom:0;left:0;border-left:140px solid transparent;border-right:140px solid transparent;border-bottom:105px solid #4db4d1;z-index:2}
+.seal{position:absolute;z-index:5;left:50%;top:50%;transform:translate(-50%,-30%);font-size:44px}
+.doodle{font-size:42px;letter-spacing:8px}
+
+/* Carta */
+.paper{
+  background:#fffdf6;border:2px dashed #83cde0;border-radius:20px;
+  padding:30px;position:relative;min-height:400px;
+  box-shadow:inset 0 0 30px #9adceb22;
+}
+.tape{position:absolute;width:95px;height:24px;background:#bdeef7;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);opacity:.8}
+.corner{position:absolute;font-size:34px}
+.c1{top:12px;left:15px}.c2{top:12px;right:15px}.c3{bottom:10px;left:18px}.c4{bottom:10px;right:18px}
+.hand{font-family:"Comic Sans MS","Trebuchet MS",cursive}
+.reveal{opacity:0;transform:translateY(12px);animation:reveal .8s forwards}
+@keyframes reveal{to{opacity:1;transform:none}}
+.delay1{animation-delay:.3s}.delay2{animation-delay:.8s}.delay3{animation-delay:1.3s}.delay4{animation-delay:1.8s}
+
+.memories{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin:22px 0}
+.memory{padding:20px;border-radius:18px;background:#eafaff;border:2px solid #b8edf7;transform:rotate(var(--r));animation:sway 3s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(var(--r)) translateY(-5px)}}
+.memory b{display:block;color:#16708f;margin-bottom:7px}
+
+.final{min-height:470px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.bigheart{font-size:110px;animation:beat 1.2s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}
+.sparkles{font-size:32px;letter-spacing:15px;animation:twinkle 2s infinite}
+.signature{font-size:25px;color:#16708f;font-family:"Comic Sans MS",cursive}
+
+.progress{position:absolute;top:17px;left:50%;transform:translateX(-50%);font-size:12px;color:#6590a4}
+@media(max-width:600px){.card{padding:23px;min-height:600px}.memories{grid-template-columns:1fr}.envelope{transform:scale(.82)}}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div><div class="hearts" id="hearts"></div>
+
+<div class="screen">
+  <section class="card" id="s1">
+    <div class="progress">1 / 4</div>
+    <div class="envelope-wrap">
+      <div class="doodle">✦ ☾ ♡ ✦</div>
+      <h1>Para Brayan 💙</h1>
+      <p>Hice una cosita pequeñita para ti...</p>
+      <div class="envelope" onclick="openLetter()">
+        <div class="env-back"></div><div class="env-flap"></div><div class="env-bottom"></div>
+        <div class="seal">♡</div>
+      </div>
+      <button onclick="openLetter()">Abrir mi cartita 💌</button>
+      <p class="hand" style="font-size:14px;color:#66879a">toca el sobre ✨</p>
+    </div>
+  </section>
+
+  <section class="card hidden" id="s2">
+    <div class="progress">2 / 4</div>
+    <div class="paper">
+      <div class="tape"></div>
+      <div class="corner c1">✦</div><div class="corner c2">☾</div>
+      <div class="corner c3">♡</div><div class="corner c4">✧</div>
+      <h1 class="hand reveal">Hola, mi amor 💙</h1>
+      <p class="hand reveal delay1">Si estás leyendo esto es porque abriste mi pequeña sorpresa. 🥹 Y aunque hoy no pueda darte algo real para tener en tus manos, quería darte aunque fuera un pedacito de mi corazón de esta manera.</p>
+      <p class="hand reveal delay2">Te amo muchísimo. Y sí, aunque a veces tengamos diferencias, discusiones, días difíciles y aunque esta distancia sea terrible, aquí sigo. Te sigo eligiendo a ti, una y otra vez. 💙</p>
+      <p class="hand reveal delay3">Sé que no siempre es fácil estar lejos, extrañarnos y querer tener al otro cerquita cuando no podemos. Pero también sé que todo esto vale la pena si al final podemos llegar lejos juntos. Yo quiero seguir intentándolo contigo, seguir creciendo, aprendiendo y construyendo lo nuestro poquito a poquito.</p>
+      <p class="hand reveal delay3">Hoy, que al parecer es el Día del Novio, pensé que no quería dejar pasar la oportunidad de recordarte lo importante que eres para mí. Porque aunque no pueda abrazarte ni darte un regalo en persona, quería hacer algo que pudiera llegar hasta ti y decirte: <b>te amo, estoy aquí y te elijo siempre.</b> 🫶🏻</p>
+      <p class="hand reveal delay4">Gracias por seguir aquí conmigo, por conocerme tanto, por aguantar mis locuras, por hacerme reír y por compartir conmigo tantos momentos. Ojalá algún día podamos mirar atrás y decir: “todo esto que vivimos a distancia sí valió la pena”. Y yo quiero estar ahí contigo para verlo. 🌙✨</p>
+      <div class="doodle reveal delay4">🌙 ⭐ 🫶🏻 ⭐ 🌙</div>
+    </div>
+    <br><button onclick="show(3)">Tengo otra cosita... ✨</button>
+  </section>
+
+  <section class="card hidden" id="s3">
+    <div class="progress">3 / 4</div>
+    <h1 class="hand">Pequeños pedacitos de nosotros 💙</h1>
+    <p>Porque no todo lo bonito tiene que ser una fecha especial.</p>
+    <div class="memories">
+      <div class="memory" style="--r:-2deg"><b>🫶🏻 Lo cotidiano</b>Hasta hablar de cualquier tontería contigo puede convertirse en mi parte favorita del día.</div>
+      <div class="memory" style="--r:2deg"><b>🌙 La distancia</b>Aunque no siempre podamos estar cerquita, seguimos encontrando formas de sentirnos juntos.</div>
+      <div class="memory" style="--r:1deg"><b>😂 Nuestras locuras</b>Gracias por todos esos momentos que terminan haciéndome reír como una loca.</div>
+      <div class="memory" style="--r:-3deg"><b>💌 Lo que viene</b>Quiero seguir creando recuerdos contigo y descubrir todas las cosas bonitas que todavía nos faltan.</div>
+    </div>
+    <button onclick="show(4)">Última sorpresa 🎁</button>
+  </section>
+
+  <section class="card hidden" id="s4">
+    <div class="progress">4 / 4</div>
+    <div class="final">
+      <div class="sparkles">✦ ✧ ✦</div>
+      <div class="bigheart">💙</div>
+      <h1 class="hand">TE AMO muchísimo, Brayan. 💙</h1>
+      <p class="hand">No importa la distancia, los días difíciles ni las diferencias que podamos tener. Mientras sigamos eligiéndonos y luchando por lo nuestro, yo quiero seguir aquí contigo. 🥹</p>
+      <p class="hand">Espero que este pequeño detalle te haga sentir aunque sea un poquito de todo el amor que te mandaría si pudiera estar ahí contigo ahora mismo.</p>
+      <p class="signature">Con amor,<br>Tu chiquilla mona ♡</p>
+      <div class="sparkles">🌙 ⭐ 🫶🏻 ⭐ 🌙</div>
+    </div>
+  </section>
+</div>
+
+<script>
+const starBox=document.getElementById('stars'), heartBox=document.getElementById('hearts');
+for(let i=0;i<45;i++){
+  const s=document.createElement('span');s.className='star';s.textContent=['✦','·','✧'][i%3];
+  s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+  s.style.animationDelay=Math.random()*3+'s';starBox.appendChild(s);
+}
+for(let i=0;i<12;i++){
+  const h=document.createElement('span');h.className='heart';h.textContent=i%2?'♡':'♥';
+  h.style.left=Math.random()*100+'%';h.style.animationDelay=Math.random()*7+'s';
+  h.style.animationDuration=(6+Math.random()*5)+'s';heartBox.appendChild(h);
+}
+function show(n){
+  for(let i=1;i<=4;i++)document.getElementById('s'+i).classList.add('hidden');
+  document.getElementById('s'+n).classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openLetter(){show(2)}
+</script>
+</body>
+</html>
